@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor clutter
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+
+# Logs and secrets
+*.log
+.env
+
+# NOTE: data/raw/ is intentionally NOT ignored.
+# The downloaded NBS CPI source files are part of this project's provenance.
+# If you later decide not to redistribute them, add a line here and document
+# how to obtain them in data/README.md instead.

@@ -1,0 +1,14 @@
+# Core analysis
+pandas>=2.2
+numpy>=1.26
+
+# Reading the NBS Excel workbooks (.xlsx and legacy .xls)
+openpyxl>=3.1
+xlrd>=2.0,<3
+
+# Visualisation
+matplotlib>=3.8
+
+# Notebook environment
+jupyterlab>=4.0
+ipykernel>=6.29
