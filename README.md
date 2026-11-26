@@ -25,19 +25,6 @@ To analyse the trend and composition of inflation in Nigeria from 2019 to the la
 
 ---
 
-## Progress
-
-- [x] Research question defined
-- [x] Research aim and objectives defined
-- [x] Data acquisition completed
-- [ ] Dataset inspection
-- [ ] Data cleaning
-- [ ] Exploratory data analysis
-- [ ] Statistical analysis
-- [ ] Visualisations
-- [ ] Analytical memo
-- [ ] GitHub repository created and project published
-
 ## Project structure
 
 ```text
