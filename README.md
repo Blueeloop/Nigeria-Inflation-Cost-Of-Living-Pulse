@@ -93,11 +93,25 @@ Read the [analytical memo](reports/memo.md) for the interpretation of the cleane
 
 ## Visualisations
 
-- ![Headline, food and core inflation trend](reports/figures/inflation_trends.png)
-- ![Latest CPI division YoY inflation](reports/figures/category_yoy_latest.png)
-- ![Selected CPI division trends](reports/figures/key_category_trends.png)
-- ![Latest estimated category contributions](reports/figures/weighted_contribution_latest.png)
-- ![Contribution reconciliation](reports/figures/contribution_reconciliation.png)
+![Headline, food and core inflation trend](reports/figures/inflation_trends.png)
+
+Headline inflation peaked at **34.80% in December 2024** and eased to **14.06% by October 2026**. Food averaged **2.57 percentage points above** headline across the period, while core averaged **2.53 percentage points below**.
+
+![Latest CPI division YoY inflation](reports/figures/category_yoy_latest.png)
+
+In October 2026, restaurants and accommodation services had the highest YoY division rate at **18.73%**, followed by food and non-alcoholic beverages at **18.64%** and housing at **14.97%**.
+
+![Selected CPI division trends](reports/figures/key_category_trends.png)
+
+The selected division trends show that food-related pressure stayed prominent through 2026, while several non-food categories eased from earlier highs.
+
+![Latest estimated category contributions](reports/figures/weighted_contribution_latest.png)
+
+Food and non-alcoholic beverages contributed **7.46 percentage points** in October 2026, ahead of restaurants and accommodation at **2.42 percentage points**. This shows why basket weights matter alongside inflation rates.
+
+![Contribution reconciliation](reports/figures/contribution_reconciliation.png)
+
+The weighted category contributions track headline inflation closely, with an average absolute gap of **0.03 percentage points**. That supports their use as an approximation rather than an official decomposition.
 
 ## Attribution and licence
 
