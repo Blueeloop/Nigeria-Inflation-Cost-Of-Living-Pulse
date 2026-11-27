@@ -93,11 +93,11 @@ Read the [analytical memo](reports/memo.md) for the interpretation of the cleane
 
 ## Visualisations
 
-- [Headline, food and core inflation trend](reports/figures/inflation_trends.png)
-- [Latest CPI division YoY inflation](reports/figures/category_yoy_latest.png)
-- [Selected CPI division trends](reports/figures/key_category_trends.png)
-- [Latest estimated category contributions](reports/figures/weighted_contribution_latest.png)
-- [Contribution reconciliation](reports/figures/contribution_reconciliation.png)
+- ![Headline, food and core inflation trend](reports/figures/inflation_trends.png)
+- ![Latest CPI division YoY inflation](reports/figures/category_yoy_latest.png)
+- ![Selected CPI division trends](reports/figures/key_category_trends.png)
+- ![Latest estimated category contributions](reports/figures/weighted_contribution_latest.png)
+- ![Contribution reconciliation](reports/figures/contribution_reconciliation.png)
 
 ## Attribution and licence
 
