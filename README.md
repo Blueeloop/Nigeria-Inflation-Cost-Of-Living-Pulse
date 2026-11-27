@@ -36,6 +36,9 @@ nigeria-inflation-cost-of-living-pulse/
 │   └── processed/           # Cleaned CSV datasets
 ├── notebooks/
 │   └── inflation_analysis.ipynb
+├── src/
+│   ├── clean_cpi.py
+│   └── generate_figures.py
 ├── reports/
 │   ├── memo.md              # written interpretation
 │   └── figures/             # generated charts
@@ -53,6 +56,13 @@ Monthly CPI publications from Nigeria's National Bureau of Statistics (NBS), sto
 py -3.14 -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
+```
+
+The notebook contains the full walkthrough. The scripts run the same cleaning and figure-generation steps:
+
+```powershell
+py -3 src/clean_cpi.py
+py -3 src/generate_figures.py
 ```
 
 ## Memo

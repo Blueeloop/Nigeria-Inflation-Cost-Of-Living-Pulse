@@ -90,4 +90,4 @@ The data shows a sharp rise in inflation through 2024, followed by easing into 2
 
 ## Source and reproducibility
 
-The source files are unmodified in `data/raw/`. The cleaning, validation, analysis and charts are reproducible in [`notebooks/inflation_analysis.ipynb`](../notebooks/inflation_analysis.ipynb). Dataset definitions and handling rules are documented in [`data/README.md`](../data/README.md).
+The source files are unmodified in `data/raw/`. The full walkthrough is in [`notebooks/inflation_analysis.ipynb`](../notebooks/inflation_analysis.ipynb). The same cleaning and chart generation steps can also be run from `src/clean_cpi.py` and `src/generate_figures.py`. Dataset definitions and handling rules are documented in [`data/README.md`](../data/README.md).

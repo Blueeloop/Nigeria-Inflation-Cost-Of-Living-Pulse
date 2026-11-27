@@ -7,7 +7,7 @@ The downloaded NBS CPI source files live here, grouped into year folders (`CPI 2
 Handling:
 
 - Files in `raw/` are kept unmodified to preserve the source record.
-- Cleaning and transformation happen in the notebook, with outputs saved under `data/processed/`.
+- Cleaning and transformation happen in the notebook or in `src/clean_cpi.py`, with outputs saved under `data/processed/`.
 - File names and coverage were checked during inspection because not every month has its own standalone file.
 
 ## Source
