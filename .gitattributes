@@ -1,0 +1,2 @@
+notebooks/*.ipynb linguist-language=Python
+*.py linguist-language=Python
