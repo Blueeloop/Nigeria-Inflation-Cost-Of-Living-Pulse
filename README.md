@@ -2,13 +2,19 @@
 
 This repository analyses monthly Consumer Price Index (CPI) publications from Nigeria's National Bureau of Statistics (NBS). It examines how headline, food and core inflation evolved from January 2019 to October 2026, and which CPI divisions contributed most to recent headline pressure.
 
-The project is designed as a reproducible portfolio analysis: the source workbooks are preserved, cleaning and figure generation are scripted, the full walkthrough is available in a notebook, and the findings are presented in a memo, charts and a web dashboard.
+The project is designed as a reproducible portfolio analysis using Python for data cleaning and analysis, and HTML and CSS for the dashboard interface. The source workbooks are preserved, the full walkthrough is available in a notebook, and the findings are presented in a memo, charts and a web dashboard.
 
 ## Dashboard
 
 A one-page dashboard summarises the latest headline, food and core inflation readings, the main category contributions and the supporting charts. It is published online for quick review.
 
 [Open the live dashboard](https://blueeloop.github.io/Nigeria-Inflation-Cost-Of-Living-Pulse/dashboard.html)
+
+## Tech stack
+
+- Python: data cleaning, analysis, figure generation and dashboard assembly.
+- HTML: dashboard structure and content layout.
+- CSS: dashboard theme, responsive layout and visual styling.
 
 ---
 
@@ -117,6 +123,7 @@ Nigeria-Inflation-Cost-Of-Living-Pulse/
 │       └── category_contributions.csv
 ├── docs/
 │   ├── dashboard.html                  # Published dashboard page
+│   ├── dashboard.css                   # Dashboard theme and layout
 │   ├── index.html                      # Dashboard landing page
 │   └── *.png
 ├── notebooks/

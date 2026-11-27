@@ -22,120 +22,7 @@ CHARTS = [
     "contribution_reconciliation.png",
 ]
 
-
-def fmt(value: float, digits: int = 2) -> str:
-    return f"{value:,.{digits}f}"
-
-
-def build_objectives_chart() -> None:
-    objectives = [
-        "Trend analysis",
-        "Food/core comparison",
-        "MoM and YoY analysis",
-        "Category drivers",
-        "Context and rebase review",
-        "Communication",
-    ]
-
-    fig, ax = plt.subplots(figsize=(12, 4.8), dpi=160)
-    fig.patch.set_facecolor("#11243a")
-    ax.set_facecolor("#11243a")
-
-    bars = ax.barh(objectives, [100] * len(objectives), color="#2f6f9f", height=0.55)
-    ax.invert_yaxis()
-    ax.set_yticks(range(len(objectives)))
-    ax.set_xlim(0, 112)
-    ax.set_xticks([])
-    ax.tick_params(axis="y", length=0)
-    ax.set_title(
-        "6 of 6 objectives complete",
-        color="#f4f8fc",
-        fontsize=14,
-        fontweight="bold",
-        pad=14,
-        loc="center",
-    )
-    ax.set_yticklabels(objectives, color="#dbe7f3", fontsize=10)
-
-    for spine in ax.spines.values():
-        spine.set_visible(False)
-
-    for bar in bars:
-        ax.text(
-            101,
-            bar.get_y() + bar.get_height() / 2,
-            "Complete",
-            va="center",
-            ha="left",
-            color="#f4f8fc",
-            fontsize=9,
-            fontweight="bold",
-        )
-
-    fig.tight_layout()
-    fig.savefig(FIGURES / "objectives_achieved.png", facecolor=fig.get_facecolor())
-    plt.close(fig)
-
-
-def main() -> None:
-    DOCS.mkdir(exist_ok=True)
-
-    monthly = pd.read_csv(PROCESSED / "monthly_inflation.csv", parse_dates=["date"]).sort_values("date")
-    contrib = pd.read_csv(PROCESSED / "category_contributions.csv", parse_dates=["date"])
-
-    latest = monthly.iloc[-1]
-    period_start = monthly["date"].iloc[0].strftime("%B %Y")
-    month = latest["date"].strftime("%B %Y")
-    headline = float(latest["headline_yoy"])
-    mom = float(latest["headline_mom"])
-    food = float(latest["food_yoy"])
-    core = float(latest["core_yoy"])
-
-    peak_row = monthly.loc[monthly["headline_yoy"].idxmax()]
-    peak_month = peak_row["date"].strftime("%B %Y")
-    peak_value = float(peak_row["headline_yoy"])
-
-    latest_date = contrib["date"].max()
-    latest_contrib = contrib[contrib["date"] == latest_date].copy()
-    top = latest_contrib.sort_values("contribution", ascending=False).head(5)
-    food_row = latest_contrib[
-        latest_contrib["category"] == "Food and non-alcoholic beverages"
-    ].iloc[0]
-    food_contrib = float(food_row["contribution"])
-    food_share = food_contrib / headline * 100 if headline else 0.0
-
-    rows = []
-    for row in top.itertuples():
-        rows.append(
-            "<tr><td>{name}</td><td class='num'>{yoy}%</td>"
-            "<td class='num strong'>{contribution} pp</td></tr>".format(
-                name=escape(row.category),
-                yoy=fmt(row.yoy),
-                contribution=fmt(row.contribution),
-            )
-        )
-
-    summary = (
-        f"Headline inflation eased to {fmt(headline)}% in {month} after peaking at "
-        f"{fmt(peak_value)}% in {peak_month}. Food remained the main source of pressure, "
-        f"contributing {fmt(food_contrib)} percentage points, or {fmt(food_share, 1)}% "
-        f"of the headline rate."
-    )
-
-    build_objectives_chart()
-
-    for chart in CHARTS:
-        copy2(FIGURES / chart, DOCS / chart)
-
-    html = Template(
-        """<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nigeria Inflation &amp; Cost-of-Living Pulse — Dashboard</title>
-<style>
-* { box-sizing: border-box; }
+STYLES = """* { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: Segoe UI, Arial, sans-serif;
@@ -235,7 +122,122 @@ footer {
   .kpis { grid-template-columns: 1fr; }
   .panel { padding: 18px; }
 }
-</style>
+"""
+
+
+def fmt(value: float, digits: int = 2) -> str:
+    return f"{value:,.{digits}f}"
+
+
+def build_objectives_chart() -> None:
+    objectives = [
+        "Trend analysis",
+        "Food/core comparison",
+        "MoM and YoY analysis",
+        "Category drivers",
+        "Context and rebase review",
+        "Communication",
+    ]
+
+    fig, ax = plt.subplots(figsize=(12, 4.8), dpi=160)
+    fig.patch.set_facecolor("#11243a")
+    ax.set_facecolor("#11243a")
+
+    bars = ax.barh(objectives, [100] * len(objectives), color="#2f6f9f", height=0.55)
+    ax.invert_yaxis()
+    ax.set_yticks(range(len(objectives)))
+    ax.set_xlim(0, 112)
+    ax.set_xticks([])
+    ax.tick_params(axis="y", length=0)
+    ax.set_title(
+        "6 of 6 objectives complete",
+        color="#f4f8fc",
+        fontsize=14,
+        fontweight="bold",
+        pad=14,
+        loc="center",
+    )
+    ax.set_yticklabels(objectives, color="#dbe7f3", fontsize=10)
+
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+
+    for bar in bars:
+        ax.text(
+            101,
+            bar.get_y() + bar.get_height() / 2,
+            "Complete",
+            va="center",
+            ha="left",
+            color="#f4f8fc",
+            fontsize=9,
+            fontweight="bold",
+        )
+
+    fig.tight_layout()
+    fig.savefig(FIGURES / "objectives_achieved.png", facecolor=fig.get_facecolor())
+    plt.close(fig)
+
+
+def main() -> None:
+    DOCS.mkdir(exist_ok=True)
+    (DOCS / "dashboard.css").write_text(STYLES, encoding="utf-8")
+
+    monthly = pd.read_csv(PROCESSED / "monthly_inflation.csv", parse_dates=["date"]).sort_values("date")
+    contrib = pd.read_csv(PROCESSED / "category_contributions.csv", parse_dates=["date"])
+
+    latest = monthly.iloc[-1]
+    period_start = monthly["date"].iloc[0].strftime("%B %Y")
+    month = latest["date"].strftime("%B %Y")
+    headline = float(latest["headline_yoy"])
+    mom = float(latest["headline_mom"])
+    food = float(latest["food_yoy"])
+    core = float(latest["core_yoy"])
+
+    peak_row = monthly.loc[monthly["headline_yoy"].idxmax()]
+    peak_month = peak_row["date"].strftime("%B %Y")
+    peak_value = float(peak_row["headline_yoy"])
+
+    latest_date = contrib["date"].max()
+    latest_contrib = contrib[contrib["date"] == latest_date].copy()
+    top = latest_contrib.sort_values("contribution", ascending=False).head(5)
+    food_row = latest_contrib[
+        latest_contrib["category"] == "Food and non-alcoholic beverages"
+    ].iloc[0]
+    food_contrib = float(food_row["contribution"])
+    food_share = food_contrib / headline * 100 if headline else 0.0
+
+    rows = []
+    for row in top.itertuples():
+        rows.append(
+            "<tr><td>{name}</td><td class='num'>{yoy}%</td>"
+            "<td class='num strong'>{contribution} pp</td></tr>".format(
+                name=escape(row.category),
+                yoy=fmt(row.yoy),
+                contribution=fmt(row.contribution),
+            )
+        )
+
+    summary = (
+        f"Headline inflation eased to {fmt(headline)}% in {month} after peaking at "
+        f"{fmt(peak_value)}% in {peak_month}. Food remained the main source of pressure, "
+        f"contributing {fmt(food_contrib)} percentage points, or {fmt(food_share, 1)}% "
+        f"of the headline rate."
+    )
+
+    build_objectives_chart()
+
+    for chart in CHARTS:
+        copy2(FIGURES / chart, DOCS / chart)
+
+    html = Template(
+        """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nigeria Inflation &amp; Cost-of-Living Pulse — Dashboard</title>
+<link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
 <div class="dashboard">
