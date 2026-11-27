@@ -9,91 +9,216 @@
 body {
   margin: 0;
   font-family: Segoe UI, Arial, sans-serif;
-  color: #172b45;
-  background: linear-gradient(135deg, #eaf2ff, #f2ecff 50%, #e8f8f4);
+  color: #17324d;
+  background: #f4f7fb;
 }
-.dashboard { max-width: 1200px; margin: 0 auto; padding: 24px; }
-.card {
-  background: rgba(255,255,255,.82);
-  border: 1px solid rgba(255,255,255,.95);
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 12px 30px rgba(40,70,110,.12);
-  margin-bottom: 16px;
+.dashboard { max-width: 1240px; margin: 0 auto; padding: 28px 24px 40px; }
+.hero {
+  background: #12324f;
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
 }
-.header { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-h1 { margin: 0; font-size: 26px; }
-.subtitle { margin-top: 6px; color: #61758d; }
-.pill { padding: 8px 14px; border-radius: 999px; background: white; font-weight: 700; }
-.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.kpi .label { font-size: 11px; text-transform: uppercase; color: #6c7f94; font-weight: 800; }
-.kpi .value { font-size: 28px; font-weight: 800; margin-top: 5px; }
-.kpi .sub { font-size: 11px; color: #71849a; margin-top: 5px; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-h2 { margin: 0 0 12px; font-size: 17px; }
-img { width: 100%; height: auto; border-radius: 12px; }
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-th { text-align: left; font-size: 11px; text-transform: uppercase; color: #6c7f94; }
-td { padding: 8px 4px; border-bottom: 1px solid #dfe8f2; }
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #a8c4dc;
+  font-weight: 700;
+}
+.hero h1 { margin: 8px 0 7px; font-size: clamp(24px, 3vw, 34px); line-height: 1.15; }
+.hero p { margin: 0; color: #c7d8e8; font-size: 14px; }
+.period { text-align: right; min-width: 170px; }
+.period span { display: block; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #a8c4dc; }
+.period strong { display: block; margin-top: 6px; font-size: 20px; }
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.kpi {
+  background: #fff;
+  border: 1px solid #dbe5ef;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 22px rgba(18, 50, 79, .06);
+}
+.kpi .label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #678096; font-weight: 800; }
+.kpi .value { margin-top: 8px; font-size: 30px; font-weight: 800; color: #12324f; line-height: 1; }
+.kpi .meta { display: block; margin-top: 8px; color: #71879c; font-size: 12px; }
+.panel {
+  background: #fff;
+  border: 1px solid #dbe5ef;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 8px 22px rgba(18, 50, 79, .05);
+}
+.panel h2 { margin: 0; font-size: 18px; color: #12324f; }
+.kicker { margin: 5px 0 16px; color: #71879c; font-size: 12px; }
+.summary { margin-bottom: 18px; border-left: 4px solid #2f6f9f; }
+.summary p { margin: 10px 0 0; font-size: 14px; line-height: 1.65; color: #405970; }
+.main-grid, .chart-grid { display: grid; gap: 18px; }
+.main-grid { grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr); align-items: stretch; }
+.chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 18px; }
+.chart img {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid #edf1f6;
+  border-radius: 10px;
+}
+.primary .chart img { max-height: 430px; }
+.writeup {
+  margin-top: 16px;
+  padding: 13px 15px;
+  border-left: 3px solid #2f6f9f;
+  background: #f6f9fc;
+  color: #405970;
+  font-size: 12.5px;
+  line-height: 1.6;
+  border-radius: 0 8px 8px 0;
+}
+.writeup strong { color: #12324f; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+th {
+  text-align: left;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #71879c;
+  padding: 0 8px 8px 0;
+  border-bottom: 1px solid #dbe5ef;
+}
+td { padding: 9px 8px 9px 0; border-bottom: 1px solid #edf1f6; vertical-align: top; }
 .num { text-align: right; white-space: nowrap; }
-.strong { font-weight: 800; color: #123f61; }
-.note { font-size: 13px; color: #52677f; line-height: 1.5; }
-@media (max-width: 800px) {
-  .kpis, .grid { grid-template-columns: 1fr; }
+.strong { font-weight: 800; color: #12324f; }
+footer {
+  margin-top: 20px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: #71879c;
+  font-size: 11px;
+}
+@media (max-width: 980px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .main-grid, .chart-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .dashboard { padding: 16px 12px 28px; }
+  .hero { align-items: flex-start; flex-direction: column; padding: 22px; }
+  .period { text-align: left; }
+  .kpis { grid-template-columns: 1fr; }
+  .panel { padding: 18px; }
 }
 </style>
 </head>
 <body>
 <div class="dashboard">
-  <header class="card header">
+  <header class="hero">
     <div>
+      <div class="eyebrow">Inflation monitor</div>
       <h1>Nigeria Inflation &amp; Cost-of-Living Pulse</h1>
-      <div class="subtitle">Static dashboard built from cleaned NBS CPI data</div>
+      <p>National CPI dashboard · January 2019 – October 2026</p>
     </div>
-    <div class="pill">Latest month · October 2026</div>
+    <div class="period">
+      <span>Latest observation</span>
+      <strong>October 2026</strong>
+    </div>
   </header>
 
   <section class="kpis">
-    <div class="card kpi">
-      <div class="label">Headline YoY</div>
+    <div class="kpi">
+      <div class="label">Headline inflation</div>
       <div class="value">14.06%</div>
-      <div class="sub">All-items inflation</div>
+      <span class="meta">Year-on-year</span>
     </div>
-    <div class="card kpi">
-      <div class="label">Headline MoM</div>
+    <div class="kpi">
+      <div class="label">Monthly change</div>
       <div class="value">0.43%</div>
-      <div class="sub">Current monthly pressure</div>
+      <span class="meta">Month-on-month</span>
     </div>
-    <div class="card kpi">
-      <div class="label">Food YoY</div>
+    <div class="kpi">
+      <div class="label">Food inflation</div>
       <div class="value">19.13%</div>
-      <div class="sub">NBS Food index</div>
+      <span class="meta">Year-on-year</span>
     </div>
-    <div class="card kpi">
-      <div class="label">Core YoY</div>
+    <div class="kpi">
+      <div class="label">Core inflation</div>
       <div class="value">10.78%</div>
-      <div class="sub">Less farm produce and energy</div>
+      <span class="meta">Year-on-year</span>
     </div>
   </section>
 
-  <section class="card">
-    <h2>Latest estimated category contributions</h2>
-    <table>
-      <thead>
-        <tr><th>Category</th><th class="num">YoY</th><th class="num">Contribution</th></tr>
-      </thead>
-      <tbody><tr><td>Food and non-alcoholic beverages</td><td class='num'>18.64</td><td class='num strong'>7.46</td></tr><tr><td>Restaurants and accommodation services</td><td class='num'>18.73</td><td class='num strong'>2.42</td></tr><tr><td>Housing, water, electricity, gas and other fuels</td><td class='num'>14.97</td><td class='num strong'>1.26</td></tr><tr><td>Transport</td><td class='num'>11.48</td><td class='num strong'>1.22</td></tr><tr><td>Health</td><td class='num'>9.61</td><td class='num strong'>0.58</td></tr></tbody>
-    </table>
-    <p class="note">Contribution combines the category inflation rate with its CPI basket weight.</p>
+  <section class="panel summary">
+    <h2>Executive summary</h2>
+    <p>Headline inflation eased to 14.06% in October 2026 after peaking at 34.80% in December 2024. Food remained the main source of pressure, contributing 7.46 percentage points, or 53.0% of the headline rate.</p>
   </section>
 
-  <section class="grid">
-    <div class="card"><h2>Inflation trend</h2><img src="inflation_trends.png" alt="Inflation trend"></div>
-    <div class="card"><h2>Latest category rates</h2><img src="category_yoy_latest.png" alt="Latest category rates"></div>
-    <div class="card"><h2>Selected category trends</h2><img src="key_category_trends.png" alt="Selected category trends"></div>
-    <div class="card"><h2>Latest contributions</h2><img src="weighted_contribution_latest.png" alt="Latest contributions"></div>
-    <div class="card"><h2>Contribution reconciliation</h2><img src="contribution_reconciliation.png" alt="Contribution reconciliation"></div>
-  </section>
+  <div class="main-grid">
+    <section class="panel primary">
+      <h2>Inflation trend</h2>
+      <p class="kicker">Headline, food and core inflation over the full study period</p>
+      <div class="chart"><img src="inflation_trends.png" alt="Headline, food and core inflation trend"></div>
+      <div class="writeup"><strong>Reading note.</strong> Food averaged 2.57 percentage points above headline across the period, while core averaged 2.53 percentage points below it. The latest headline rate was 14.06%.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Latest category drivers</h2>
+      <p class="kicker">Top five contributors to headline inflation · October 2026</p>
+      <table>
+        <thead>
+          <tr><th>Category</th><th class="num">Rate</th><th class="num">Impact</th></tr>
+        </thead>
+        <tbody><tr><td>Food and non-alcoholic beverages</td><td class='num'>18.64%</td><td class='num strong'>7.46 pp</td></tr><tr><td>Restaurants and accommodation services</td><td class='num'>18.73%</td><td class='num strong'>2.42 pp</td></tr><tr><td>Housing, water, electricity, gas and other fuels</td><td class='num'>14.97%</td><td class='num strong'>1.26 pp</td></tr><tr><td>Transport</td><td class='num'>11.48%</td><td class='num strong'>1.22 pp</td></tr><tr><td>Health</td><td class='num'>9.61%</td><td class='num strong'>0.58 pp</td></tr></tbody>
+      </table>
+      <div class="writeup"><strong>Reading note.</strong> Contribution combines each division&#x27;s inflation rate with its CPI basket weight, so large-weight categories can matter more than high-rate but smaller categories.</div>
+    </section>
+  </div>
+
+  <div class="chart-grid">
+    <section class="panel">
+      <h2>Latest category rates</h2>
+      <p class="kicker">Year-on-year inflation by CPI division</p>
+      <div class="chart"><img src="category_yoy_latest.png" alt="Latest CPI division inflation rates"></div>
+      <div class="writeup"><strong>Reading note.</strong> The highest year-on-year division rate in October 2026 was Restaurants and accommodation services at 18.73%. Food and non-alcoholic beverages recorded 18.64%.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Selected category trends</h2>
+      <p class="kicker">How major divisions changed through 2026</p>
+      <div class="chart"><img src="key_category_trends.png" alt="Selected CPI division trends"></div>
+      <div class="writeup"><strong>Reading note.</strong> Between January 2026 and October 2026, Food and non-alcoholic beverages recorded the largest increase in estimated contribution (4.35 percentage points), while Health recorded the largest decline (1.25 percentage points).</div>
+    </section>
+
+    <section class="panel">
+      <h2>Latest contributions</h2>
+      <p class="kicker">Estimated contribution by CPI division · October 2026</p>
+      <div class="chart"><img src="weighted_contribution_latest.png" alt="Estimated category contributions"></div>
+      <div class="writeup"><strong>Reading note.</strong> Food and non-alcoholic beverages contributed 7.46 percentage points in October 2026, or 53.0% of the headline rate.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Contribution reconciliation</h2>
+      <p class="kicker">Estimated total contribution compared with headline inflation</p>
+      <div class="chart"><img src="contribution_reconciliation.png" alt="Contribution reconciliation"></div>
+      <div class="writeup"><strong>Reading note.</strong> The weighted category contributions track headline inflation closely, with an average absolute gap of 0.03 percentage points.</div>
+    </section>
+  </div>
+
+  <footer>
+    <span>Source: National Bureau of Statistics (NBS), Nigeria.</span>
+    <span>Analysis notes and method are documented in the project README.</span>
+  </footer>
 </div>
 </body>
 </html>
