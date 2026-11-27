@@ -15,7 +15,6 @@ DASHBOARD = ROOT / "dashboard"
 DOCS = ROOT / "docs"
 
 CHARTS = [
-    "objectives_achieved.png",
     "inflation_trends.png",
     "category_yoy_latest.png",
     "key_category_trends.png",
@@ -74,8 +73,6 @@ body {
 .kicker { margin: 5px 0 16px; color: #9fb4c9; font-size: 12px; }
 .summary { margin-bottom: 18px; border-left: 4px solid #5aa9e6; }
 .summary p { margin: 10px 0 0; font-size: 14px; line-height: 1.65; color: #c6d5e4; }
-.objectives { margin-bottom: 18px; border-left: 4px solid #5aa9e6; }
-.objectives .chart img { max-height: 320px; }
 .main-grid, .chart-grid { display: grid; gap: 18px; }
 .main-grid { grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr); align-items: stretch; }
 .chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 18px; }
@@ -283,12 +280,6 @@ def main() -> None:
   <section class="panel summary">
     <h2>Executive summary</h2>
     <p>$summary</p>
-  </section>
-
-  <section class="panel objectives">
-    <h2>Objectives achieved</h2>
-    <p class="kicker">Progress against the six stated project objectives</p>
-    <div class="chart"><img src="objectives_achieved.png" alt="All six project objectives marked complete"></div>
   </section>
 
   <div class="main-grid">
