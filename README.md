@@ -13,8 +13,10 @@ A one-page dashboard summarises the latest headline, food and core inflation rea
 ## Tech stack
 
 - Python: data cleaning, analysis, figure generation and dashboard assembly.
-- HTML: dashboard structure and content layout in [`dashboard/index.html`](dashboard/index.html).
-- CSS: dashboard theme, responsive layout and visual styling in [`dashboard/dashboard.css`](dashboard/dashboard.css).
+- HTML: semantic structure and content layout for the dashboard.
+- CSS: responsive layout, visual hierarchy and the dark dashboard theme.
+
+View the [analysis scripts](src/) and [dashboard source](dashboard/).
 
 ---
 
