@@ -14,6 +14,8 @@ OLD_BASE_SOURCES = {
     2023: "CPI 2023/cpi_1NewDECEMBER2023.xlsx",
 }
 LATEST_SOURCE = "CPI 2026/cpi_1New_October2026.xlsx"
+FIRST_MONTH = "2019-01-01"
+LATEST_MONTH = "2026-10-01"
 
 CATEGORY_COLUMNS = {
     14: "Food and non-alcoholic beverages",
@@ -169,7 +171,7 @@ def build_monthly():
 
 
 def validate_monthly(monthly):
-    expected_dates = pd.date_range("2019-01-01", "2026-10-01", freq="MS")
+    expected_dates = pd.date_range(FIRST_MONTH, LATEST_MONTH, freq="MS")
     rate_columns = [
         "headline_mom",
         "headline_yoy",
