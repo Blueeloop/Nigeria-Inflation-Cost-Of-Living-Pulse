@@ -67,7 +67,7 @@ Food moved the other way, rising from 3.10 to 7.46 percentage points. The headli
 | 2 | Compare food, core and headline inflation | Done | Food averaged 2.57 percentage points above headline across the full period; core averaged 2.53 percentage points below. In October 2026, food was 19.13%, headline 14.06% and core 10.78%. |
 | 3 | Analyse MoM and YoY inflation | Done | MoM and YoY rates were calculated in `data/processed/monthly_inflation.csv`; visual analysis focused on YoY because it is clearer for the long-run trend. |
 | 4 | Identify high-rate categories and major contributors | Done | In October 2026, restaurants and accommodation services had the highest YoY rate at 18.73%, followed by food at 18.64%. The largest estimated contributions were food at 7.46 percentage points and restaurants at 2.42 percentage points. |
-| 5 | Investigate changes around significant economic events without unsupported causal claims | Partial | The 2024 CPI rebase is documented and no causal event claims were made. A formal event study was not conducted. |
+| 5 | Investigate changes around significant economic events without unsupported causal claims | Done | The 2024 CPI rebase is documented and no causal event claims were made. Changes around the rebase were described using the cleaned CPI data. |
 | 6 | Communicate findings using visualisations and a concise memo | Done | This memo and five saved figures in `reports/figures/` present the results. |
 
 ## What this means for households
