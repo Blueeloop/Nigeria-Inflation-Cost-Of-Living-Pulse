@@ -1,16 +1,16 @@
 # Nigeria Inflation & Cost-of-Living Pulse
 
-An exploratory data analysis of Nigeria's inflation trends, comparing headline, food and core inflation while investigating consumer price categories and cost-of-living pressures.
+This repo tracks headline, food and core inflation in Nigeria and looks at which consumer categories have mattered most for cost-of-living pressure.
 
 ---
 
 ## Research question
 
-How has inflation in Nigeria evolved from 2019 to the latest available period, how have food and core inflation contributed to the trend in headline inflation, and which consumer price categories have been the major drivers of inflationary pressure?
+How have headline, food and core inflation changed from 2019 to the latest available month, and which CPI categories have mattered most?
 
 ## Aim
 
-To analyse the trend and composition of inflation in Nigeria from 2019 to the latest available period using monthly Consumer Price Index (CPI) data from the National Bureau of Statistics (NBS), with particular emphasis on the relative behaviour of headline, food and core inflation, and identifying consumer price categories contributing most significantly to inflationary pressure.
+To use monthly Consumer Price Index (CPI) data from the National Bureau of Statistics (NBS) to describe Nigeria's inflation trend and composition from 2019 to the latest available month, with attention to food and core inflation and the categories behind headline pressure.
 
 ## Objectives
 
@@ -32,15 +32,15 @@ nigeria-inflation-cost-of-living-pulse/
 ├── .gitignore
 ├── data/
 │   ├── README.md
-│   └── raw/                 # Unmodified NBS CPI source files, grouped by year
+│   ├── raw/                 # Unmodified NBS CPI source files, grouped by year
+│   └── processed/           # Cleaned CSV datasets
 ├── notebooks/
-│   └── inflation_analysis.ipynb   # added during analysis
-├── src/                     # reusable helper scripts, if needed
+│   └── inflation_analysis.ipynb
 ├── reports/
-│   ├── memo.md
-│   └── figures/
+│   ├── memo.md              # written interpretation
+│   └── figures/             # generated charts
 └── notes/
-    └── concepts.md          # running glossary of concepts covered
+    └── dataset_inspection.md
 ```
 
 ## Data
@@ -55,7 +55,17 @@ py -3.14 -m venv .venv
 pip install -r requirements.txt
 ```
 
-> Notebook, results and memo will be added as the analysis progresses.
+## Memo
+
+Read the [analytical memo](reports/memo.md) for the interpretation of the cleaned CPI data.
+
+## Visualisations
+
+- [Headline, food and core inflation trend](reports/figures/inflation_trends.png)
+- [Latest CPI division YoY inflation](reports/figures/category_yoy_latest.png)
+- [Selected CPI division trends](reports/figures/key_category_trends.png)
+- [Latest estimated category contributions](reports/figures/weighted_contribution_latest.png)
+- [Contribution reconciliation](reports/figures/contribution_reconciliation.png)
 
 ## Attribution and licence
 
