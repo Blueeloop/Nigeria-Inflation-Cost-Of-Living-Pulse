@@ -1,7 +1,5 @@
 # Nigeria Inflation & Cost-of-Living Pulse
 
-**Day 1 of the 30 Days of Data Analytics & Data Science Challenge**
-
 An exploratory data analysis of Nigeria's inflation trends, comparing headline, food and core inflation while investigating consumer price categories and cost-of-living pressures.
 
 ---
@@ -36,7 +34,7 @@ nigeria-inflation-cost-of-living-pulse/
 │   ├── README.md
 │   └── raw/                 # Unmodified NBS CPI source files, grouped by year
 ├── notebooks/
-│   └── day_01_inflation_analysis.ipynb   # added during analysis
+│   └── inflation_analysis.ipynb   # added during analysis
 ├── src/                     # reusable helper scripts, if needed
 ├── reports/
 │   ├── memo.md
