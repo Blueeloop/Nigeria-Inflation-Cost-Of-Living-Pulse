@@ -13,8 +13,8 @@ A one-page dashboard summarises the latest headline, food and core inflation rea
 ## Tech stack
 
 - Python: data cleaning, analysis, figure generation and dashboard assembly.
-- HTML: dashboard structure and content layout.
-- CSS: dashboard theme, responsive layout and visual styling.
+- HTML: dashboard structure and content layout in [`dashboard/index.html`](dashboard/index.html).
+- CSS: dashboard theme, responsive layout and visual styling in [`dashboard/dashboard.css`](dashboard/dashboard.css).
 
 ---
 
@@ -121,6 +121,10 @@ Nigeria-Inflation-Cost-Of-Living-Pulse/
 │       ├── monthly_inflation.csv
 │       ├── cpi_divisions.csv
 │       └── category_contributions.csv
+├── dashboard/
+│   ├── index.html                      # Dashboard page source
+│   ├── dashboard.css                   # Dashboard theme and layout
+│   └── *.png                           # Charts used by the dashboard
 ├── docs/
 │   ├── dashboard.html                  # Published dashboard page
 │   ├── dashboard.css                   # Dashboard theme and layout

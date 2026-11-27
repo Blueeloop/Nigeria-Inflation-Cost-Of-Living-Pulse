@@ -11,6 +11,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 PROCESSED = ROOT / "data" / "processed"
 FIGURES = ROOT / "reports" / "figures"
+DASHBOARD = ROOT / "dashboard"
 DOCS = ROOT / "docs"
 
 CHARTS = [
@@ -180,7 +181,9 @@ def build_objectives_chart() -> None:
 
 
 def main() -> None:
+    DASHBOARD.mkdir(exist_ok=True)
     DOCS.mkdir(exist_ok=True)
+    (DASHBOARD / "dashboard.css").write_text(STYLES, encoding="utf-8")
     (DOCS / "dashboard.css").write_text(STYLES, encoding="utf-8")
 
     monthly = pd.read_csv(PROCESSED / "monthly_inflation.csv", parse_dates=["date"]).sort_values("date")
@@ -228,6 +231,7 @@ def main() -> None:
     build_objectives_chart()
 
     for chart in CHARTS:
+        copy2(FIGURES / chart, DASHBOARD / chart)
         copy2(FIGURES / chart, DOCS / chart)
 
     html = Template(
@@ -351,9 +355,10 @@ def main() -> None:
         rows="".join(rows),
     )
 
+    (DASHBOARD / "index.html").write_text(html, encoding="utf-8")
     (DOCS / "dashboard.html").write_text(html, encoding="utf-8")
     (DOCS / "index.html").write_text(html, encoding="utf-8")
-    print("Wrote docs/dashboard.html and docs/index.html")
+    print("Wrote dashboard/index.html, docs/dashboard.html and docs/index.html")
 
 
 if __name__ == "__main__":
