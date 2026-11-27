@@ -5,6 +5,7 @@ from pathlib import Path
 from shutil import copy2
 from string import Template
 
+import matplotlib.pyplot as plt
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -13,6 +14,7 @@ FIGURES = ROOT / "reports" / "figures"
 DOCS = ROOT / "docs"
 
 CHARTS = [
+    "objectives_achieved.png",
     "inflation_trends.png",
     "category_yoy_latest.png",
     "key_category_trends.png",
@@ -23,6 +25,56 @@ CHARTS = [
 
 def fmt(value: float, digits: int = 2) -> str:
     return f"{value:,.{digits}f}"
+
+
+def build_objectives_chart() -> None:
+    objectives = [
+        "Trend analysis",
+        "Food/core comparison",
+        "MoM and YoY analysis",
+        "Category drivers",
+        "Context and rebase review",
+        "Communication",
+    ]
+
+    fig, ax = plt.subplots(figsize=(12, 4.8), dpi=160)
+    fig.patch.set_facecolor("#11243a")
+    ax.set_facecolor("#11243a")
+
+    bars = ax.barh(objectives, [100] * len(objectives), color="#2f6f9f", height=0.55)
+    ax.invert_yaxis()
+    ax.set_yticks(range(len(objectives)))
+    ax.set_xlim(0, 112)
+    ax.set_xticks([])
+    ax.tick_params(axis="y", length=0)
+    ax.set_title(
+        "6 of 6 objectives complete",
+        color="#f4f8fc",
+        fontsize=14,
+        fontweight="bold",
+        pad=14,
+        loc="center",
+    )
+    ax.set_yticklabels(objectives, color="#dbe7f3", fontsize=10)
+
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+
+    for bar in bars:
+        ax.text(
+            101,
+            bar.get_y() + bar.get_height() / 2,
+            "Complete",
+            va="center",
+            ha="left",
+            color="#f4f8fc",
+            fontsize=9,
+            fontweight="bold",
+        )
+
+    fig.tight_layout()
+    fig.savefig(FIGURES / "objectives_achieved.png", facecolor=fig.get_facecolor())
+    plt.close(fig)
 
 
 def main() -> None:
@@ -69,6 +121,8 @@ def main() -> None:
         f"contributing {fmt(food_contrib)} percentage points, or {fmt(food_share, 1)}% "
         f"of the headline rate."
     )
+
+    build_objectives_chart()
 
     for chart in CHARTS:
         copy2(FIGURES / chart, DOCS / chart)
@@ -132,6 +186,8 @@ body {
 .kicker { margin: 5px 0 16px; color: #9fb4c9; font-size: 12px; }
 .summary { margin-bottom: 18px; border-left: 4px solid #5aa9e6; }
 .summary p { margin: 10px 0 0; font-size: 14px; line-height: 1.65; color: #c6d5e4; }
+.objectives { margin-bottom: 18px; border-left: 4px solid #5aa9e6; }
+.objectives .chart img { max-height: 320px; }
 .main-grid, .chart-grid { display: grid; gap: 18px; }
 .main-grid { grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr); align-items: stretch; }
 .chart-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 18px; }
@@ -221,6 +277,12 @@ footer {
   <section class="panel summary">
     <h2>Executive summary</h2>
     <p>$summary</p>
+  </section>
+
+  <section class="panel objectives">
+    <h2>Objectives achieved</h2>
+    <p class="kicker">Progress against the six stated project objectives</p>
+    <div class="chart"><img src="objectives_achieved.png" alt="All six project objectives marked complete"></div>
   </section>
 
   <div class="main-grid">
