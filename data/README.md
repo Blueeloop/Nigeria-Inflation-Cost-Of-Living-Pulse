@@ -14,7 +14,7 @@ Handling:
 
 National Bureau of Statistics (NBS), Nigeria — monthly CPI / inflation publications.
 
-**Attribution and licence:** to be confirmed from the NBS source pages and recorded here before the repository is published. This file will be updated with source links and the required citation.
+**Attribution and licence:** confirm the NBS attribution and licence requirements before reuse or redistribution, and record the source links and required citation here.
 
 ## Derived data
 

@@ -23,6 +23,28 @@ To use monthly Consumer Price Index (CPI) data from the National Bureau of Stati
 
 ---
 
+## What was completed
+
+- Inspected the NBS CPI source files and documented the coverage and handling rules in [`notes/dataset_inspection.md`](notes/dataset_inspection.md) and [`data/README.md`](data/README.md).
+- Built an executed notebook plus two Python scripts to clean the data and regenerate the main outputs.
+- Produced three processed datasets: a 94-month headline/food/core series, a 574-row CPI division panel, and a 130-row estimated contribution table.
+- Calculated YoY and MoM inflation, food/core gaps, division-level inflation and weight-based contribution estimates.
+- Kept the November 2009 and 2024 CPI bases separate so index levels were never mixed across the 2024 rebase.
+- Generated five figures and an analytical memo covering the trend, category pressure, household interpretation and limitations.
+- Validated the outputs: no duplicate or missing months, no duplicate category-months, no missing division index values, and an average absolute contribution gap of 0.03 percentage points.
+
+## How the aim was met
+
+| Aim component | Work done | Evidence |
+|---|---|---|
+| Describe Nigeria's inflation trend | Cleaned monthly headline, food and core inflation data from January 2019 to October 2026 and calculated YoY/MoM rates. | [`monthly_inflation.csv`](data/processed/monthly_inflation.csv), [`inflation_trends.png`](reports/figures/inflation_trends.png), [`memo.md`](reports/memo.md) |
+| Compare headline, food and core inflation | Measured the average gap between food/core and headline inflation and summarised how the pattern changed. | [`memo.md`](reports/memo.md), [`inflation_trends.png`](reports/figures/inflation_trends.png) |
+| Identify categories behind headline pressure | Cleaned the 13 CPI divisions and estimated contributions using NBS basket weights. | [`cpi_divisions.csv`](data/processed/cpi_divisions.csv), [`category_contributions.csv`](data/processed/category_contributions.csv), [`weighted_contribution_latest.png`](reports/figures/weighted_contribution_latest.png) |
+| Handle the 2024 rebase carefully | Used rates across the base break but did not splice or compare raw index levels from different bases. | [`data/README.md`](data/README.md), [`memo.md`](reports/memo.md) |
+| Communicate the findings | Provided an executed notebook, reproducible scripts, saved charts and a concise memo. | [`inflation_analysis.ipynb`](notebooks/inflation_analysis.ipynb), [`src/`](src/), [`reports/figures/`](reports/figures/), [`memo.md`](reports/memo.md) |
+
+---
+
 ## Project structure
 
 ```text
@@ -79,4 +101,4 @@ Read the [analytical memo](reports/memo.md) for the interpretation of the cleane
 
 ## Attribution and licence
 
-Source: National Bureau of Statistics (NBS), Nigeria — CPI publications. Confirm the exact licence/attribution requirements from the NBS source pages before publication and record them in `data/README.md`.
+Source: National Bureau of Statistics (NBS), Nigeria — CPI publications. Confirm the exact licence/attribution requirements from the NBS source pages and record them in `data/README.md`.
