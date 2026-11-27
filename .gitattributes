@@ -1,2 +1,2 @@
-notebooks/*.ipynb linguist-language=Python
+*.ipynb linguist-detectable=false
 *.py linguist-language=Python
